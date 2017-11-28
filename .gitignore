@@ -1,0 +1,47 @@
+#
+# ccast_test git ignore
+#
+
+# data & misc
+*.h5
+*.hdf
+*.mat
+*.log
+*.core
+*.dat
+
+# tex & docs
+*.aux
+*.toc
+*.snm
+*.nav
+*.out
+*.vrb
+*.pdf
+*.png
+*.fig
+
+# archives and packages
+*.gz
+*.tgz
+*.tar
+*.zip
+*.bz2
+
+# libs and object files
+*.a
+*.o
+*.so
+*.mexa64
+
+# backup files
+*.svn
+*.bak
+*~
+
+# data directories
+noaa_test
+cal_test1
+cal_test2
+mean_cfovs
+
