@@ -1,4 +1,6 @@
 
+CrIS test and validation, forked from ccast/motmsc 28 Nov 2017
+
 top level 
 --------
 rad_svd - SVD on some sample radiance sets
