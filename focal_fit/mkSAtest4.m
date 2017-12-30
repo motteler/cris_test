@@ -20,15 +20,15 @@ opts.wrap = 'psinc n';
 % nominal wlaser value
 wlaser = 773.1307;
 
-opts.foax = d1.foaxLW2; opts.frad = d1.fradLW;
+opts.foax = d1.foax(:,1); opts.frad = d1.frad(:,1);
 sfile = 'SAinv_test4_LW.mat';
 mkSAinv('LW', wlaser, sfile, opts);
 
-opts.foax = d1.foaxMW2; opts.frad = d1.fradMW;
+opts.foax = d1.foax(:,2); opts.frad = d1.frad(:,2);
 sfile = 'SAinv_test4_MW.mat';
 mkSAinv('MW', wlaser, sfile, opts);
 
-opts.foax = d1.foaxSW2; opts.frad = d1.fradSW;
+opts.foax = d1.foax(:,3); opts.frad = d1.frad(:,3);
 sfile = 'SAinv_test4_SW.mat';
 mkSAinv('SW', wlaser, sfile, opts);
 
