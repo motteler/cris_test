@@ -1,0 +1,25 @@
+
+CrIS focal plane tests.
+
+These are done by modifying the focal plane in various ways, and
+also for some tests by varying the met laser wavelength used for
+the calibration calcs.  Then obs calculated with the mods can be 
+compared with unmodified obs or with calculated reference truth.
+
+Test 6: wlaser +5 ppm shift, wlaser * (1 + 5e-6), stock v33a focal
+plane
+
+Test 5: no wlaser shift, focal plane with v33a off-axis angles for
+side FOBs reduced 6.7 pct and corner FOVs reduced 3 pct.
+
+Test 4: wlaser -4 ppm, wlaser * (1 - 4e-6), focal plane from
+fp_test4 and mkSAtest4
+
+Test 3: wlaser -5 ppm, wlaser * (1 + 5e-6), 2 foax shifts per band
+starting from v33a.  See mkSAtest3 for details.
+
+Test 2: no wlaser shift, 2 foax shifts per band starting from v33a.
+See mkSAtest2 for details.
+
+Test 1: no wlaser shift, default (ATBD) focal plane
+

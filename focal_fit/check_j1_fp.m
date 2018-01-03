@@ -1,5 +1,5 @@
 %
-% compare eng focal plane with umbc get_fp
+% compare j1 eng focal plane with get_fp 'exelis'
 %
 
 % call fp_from_eng
@@ -18,6 +18,7 @@ frad2 = NaN(9,3);
 for i = 1 : 3
   fp = get_fp(band{i}, name);
   s = fp.s; d = fp.d;
+% foax2(:,i) = sqrt((s(:,2) - d(1)).^2 + (s(:,3) - d(2)).^2) ./ 1e6;
   foax2(:,i) = sqrt((s(:,2) + d(1)).^2 + (s(:,3) + d(2)).^2) ./ 1e6;
   frad2(:,i) = ones(9,1) *  16808 / 2e6;
 end

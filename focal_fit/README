@@ -1,7 +1,28 @@
 
-ccast test driver scripts: ccast_test*.m 
+tests
+------
 
-SA matrices for ccast tests: mkSAtest*.m
- 
-create a focal plane for test 4: fp_test4.m
+ccast_test*   - ccast test driver scripts
+mkSAtest*     - make SA matrices for ccast tests
+fp_test4      - create a focal plane for test 4
+test5_dv      - get the test 5 frequency shifts
+test6_dv      - get the test 6 frequency shifts
+
+see test_notes.txt for an overview of the individual tests
+
+check_j1_fp   - compare j1 eng focal plane with get_fp 'exelis'
+check_npp_fp  - compare eng focal plane with get_fp and fp_v33a
+
+fp_fit_test   - try lsqnonlin to find an x-y shift
+fp_cost       - cost function for fp_fit_test
+
+
+functions
+----------
+
+get_fp        - Larrabee's focal plane function
+fp_from_eng   - return focal plane spec from an eng packet
+find_dv       - find dv for reference and shifted SDR calcs
+rprint        - print focal plane params as a 3 x 3 array
+rdr2sdr       - ccast/source function with met laser mod
 

@@ -9,7 +9,7 @@
 %
 % OUTPUT
 %   fp.rad   - 9 x 3 FOV radii, urad
-%   fp.pos   - 9 x 2 x 3 FOV x-y position, ursd
+%   fp.pos   - 9 x 2 x 3 FOV x-y position, urad
 %   fp.dxy   - 2 x 3 focal plane x-y shift, urad
 %   fp.foax  - 9 x 3 FOV off-axis angles, rad
 %   fp.frad  - 9 x 3 FOV radii, rad

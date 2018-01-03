@@ -117,7 +117,8 @@ for fi = 1 : nfile
     continue
   end
 
-% wlaser = wlaser * (1 - 4e-6);  % ******* TEST HACK ********
+% wlaser = wlaser * (1 + 5e-6);  % ******* TEST HACK ********
+  wlaser = wlaser * (1 + 20e-6);  % ******* TEST HACK ********
 
   %-----------------------------
   % order and validate igm data
