@@ -1,5 +1,5 @@
 %
-% fp_from_eng - return focal plane spec from an eng packet
+% fp_from_eng - focal plane from the eng packet
 %
 % SYNOPSIS
 %   fp = fp_from_eng(eng)
@@ -8,14 +8,16 @@
 %   eng  - eng packet from the MIT reader
 %
 % OUTPUT
-%   fp.rad   - 9 x 3 FOV radii, urad
-%   fp.pos   - 9 x 2 x 3 FOV x-y position, urad
-%   fp.dxy   - 2 x 3 focal plane x-y shift, urad
-%   fp.foax  - 9 x 3 FOV off-axis angles, rad
-%   fp.frad  - 9 x 3 FOV radii, rad
+%   fp  - 1 x 3 struct array with fields
+%     rad   - 9 x 1 FOV radii, urad
+%     pos   - 9 x 2 FOV x-y position, urad
+%     dxy   - 2 x 1 focal plane x-y shift, urad
+%     foax  - 9 x 1 FOV off-axis angles, rad
+%     frad  - 9 x 1 FOV radii, rad
 %
-%   the last index is the band
-% 
+% note: rad, pos, and dxy are in microradians, while foax and frad
+% are in radians.
+%
 
 function fp = fp_from_eng(eng)
 
@@ -40,10 +42,13 @@ for b = 1 : 3
   foax(:,b) = sqrt((pos(:,1,b) + dxy(1,b)).^2 + (pos(:,2,b) + dxy(2,b)).^2);
 end
 
-fp.rad = rad;
-fp.pos = pos;
-fp.dxy = dxy;
-fp.frad = rad * 1e-6;
-fp.foax = foax * 1e-6;
-
+% copy values to fp
+fp = struct([]);
+for i = 1 : 3
+  fp(i).rad = rad(:,i);
+  fp(i).pos = pos(:,:,i);
+  fp(i).dxy = dxy(:,i);
+  fp(i).frad = rad(:,i) * 1e-6;
+  fp(i).foax = foax(:,i) * 1e-6;
+end
 
