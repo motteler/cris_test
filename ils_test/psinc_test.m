@@ -35,43 +35,23 @@ srf1 = newILS(ifov, inst, vref, vgrid, opts);
 opts.wrap = 'psinc n';
 srf2 = newILS(ifov, inst, vref, vgrid, opts);
 
+ddv = inst.dv / inst.df;
+vgrid = vgrid(1) : ddv : vgrid(end);
+
 % regular sinc single-ray ILS
 srf3 = rsinc(2*(vgrid - vref*cos(theta))*opd);
 srf3 = srf3 / sum(srf3);
 
 % periodic sinc single-ray ILS
-srf4 = psinc(2*(vgrid - vref*cos(theta))*opd, N);
+srf4 = psinc(2*(vgrid - vref*cos(theta))*opd, N*inst.df);
 srf4 = srf4 / sum(srf4);
 
-% periodic sinc extended
-frq5 = 0 : inst.dv : 4000;
-srf5 = psinc(2*(frq5 - vref*cos(theta))*opd, N);
 
-% sinc and psinc ILS plots
-figure(1); clf
-subplot(3,1,1)
-plot(vgrid, srf1, vgrid, srf2)
-axis([pv1, pv2, -0.2, 0.8])
-legend('sinc ILS', 'psinc ILS')
-title(sprintf('FOV %d sinc and periodic sinc ILS', ifov))
-ylabel('normalized weight')
-grid on; zoom on
+plot(vgrid, srf3 - srf4)
 
-subplot(3,1,2)
-plot(vgrid, srf1, vgrid, srf2)
-axis([1100, 1140, -1e-3, 1e-3]) % LW zoom only
-legend('sinc ILS', 'psinc ILS', 'location', 'south')
-title(sprintf('FOV %d sinc and periodic sinc ILS zoom', ifov))
-ylabel('normalized weight')
-grid on; zoom on
 
-subplot(3,1,3)
-plot(vgrid, srf2 - srf1)
-ax = axis; ax(1) = pv1; ax(2) = pv2; axis(ax);
-title('periodic minus regular sinc ILS')
-xlabel('wavenumber')
-ylabel('difference')
-grid on; zoom on
+return
+
 
 % single-ray and ILS plots
 figure(2); clf
